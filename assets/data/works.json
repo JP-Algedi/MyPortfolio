@@ -4,7 +4,7 @@
     "title": "VR Allow Skills",
     "description": "弓矢の構えるポーズを検知して異なるスキルを発動できるようにした。",
     "media": [
-      { "type": "video", "src": "assets/video/VRAllowSkills.mp4" },
+      { "type": "video", "src": "assets/video/VRArrowSkills.mp4" },
       { "type": "image", "src": "assets/img/AllowRain.jpeg" }
     ],
     "tags": ["Unity", "VR"],
