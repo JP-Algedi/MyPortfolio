@@ -1,13 +1,53 @@
 [
   {
-    "id": "vr_demo_01",
-    "title": "VR Allow Skills",
-    "description": "弓矢の構えるポーズを検知して異なるスキルを発動できるようにした。",
+    "id": "VR Allow Skills",
+    "title": "VR PoseDetector",
+    "description": "弓矢を構えるポーズを検知して異なるスキルを発動できるようにしました。",
     "media": [
       { "type": "video", "src": "assets/video/VRArrowSkills.mp4" },
       { "type": "image", "src": "assets/img/ArrowRain.jpeg" }
     ],
-    "tags": ["Unity", "VR"],
-    "date": "2026-01-01"
+    "tags": ["Unity", "VR", "MetaInteractionSDK"],
+    "date": "2025/10"
+  },
+  {
+    "id": "003",
+    "title": "VRMアバターを動かす",
+    "description": "VRMをMetaQuestビルドで動かしました。",
+    "media": [
+      { "type": "video", "src": "assets/video/3PointUpperBodyTracking.mov" }
+    ],
+    "tags": ["Unity", "VR", "MetaInteractionSDK"],
+    "date": "2025/08"
+  },
+  {
+    "id": "004",
+    "title": "音声認識",
+    "description": "音声認識でイベントがトリガーされる仕組みを作りました。",
+    "media": [
+      { "type": "video", "src": "assets/video/ExplosionVoiceTracking.mov" }
+    ],
+    "tags": ["Unity", "VR", "MetaVoiceSDK"],
+    "date": "2025/08"
+  },
+  {
+    "id": "002",
+    "title": "モーション撮影",
+    "description": "HMDとコントローラーとトラッカー(計11点)を用いてモーションデータを収録し、利用しました。",
+    "media": [{ "type": "video", "src": "assets/video/SpinSlash.mp4" }],
+    "tags": ["Unity", "VR", "HaritoraX"],
+    "date": "2024/05"
+  },
+  {
+    "id": "005",
+    "title": "メディア汎用Webアプリケーション",
+    "description": "DB登録・動画サイトからDL・フォーマット変換ができるアプリケーションを作りました。",
+    "media": [
+      { "type": "image", "src": "assets/img/MediaIndex.png" },
+      { "type": "image", "src": "assets/img/MediaDownload.png" },
+      { "type": "image", "src": "assets/img/MediaConvert.png" }
+    ],
+    "tags": ["Web", "Xampp", "FFmpeg"],
+    "date": "2025/04"
   }
 ]

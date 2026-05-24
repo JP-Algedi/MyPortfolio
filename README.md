@@ -1,3 +1,5 @@
+URL: https://jp-algedi.github.io/MyPortfolio/
+
 MyPortfolioWebSight/
 ├─ index.html
 ├─ assets/
