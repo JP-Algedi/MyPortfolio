@@ -56,6 +56,17 @@
   overflow-x: auto;
   background: #fafafa;
   border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+/* スクロールバー軽量化（任意） */
+.thumb-row::-webkit-scrollbar {
+  height: 6px;
+}
+
+.thumb-row::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
 }
 
 .thumb {
@@ -71,6 +82,16 @@
   opacity: 0.7;
 
   transition: 0.15s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .thumb:hover {
@@ -83,7 +104,7 @@
 }
 
 /* =========================
-   Card Body (important for height sync)
+   Card Body
 ========================= */
 
 .portfolio-card .card-body {
@@ -92,7 +113,6 @@
   flex: 1;
 }
 
-/* タイトル・説明 */
 .portfolio-card h5 {
   margin-bottom: 6px;
 }
@@ -102,17 +122,14 @@
   color: #555;
 }
 
-/* タグ */
 .portfolio-card .badge {
   font-size: 0.75rem;
 }
 
-/* 詳細リンクを下に固定 */
 .portfolio-card .btn {
   margin-top: auto;
 }
 
-/* 日付 */
 .portfolio-card small {
   color: #888;
 }
@@ -121,7 +138,6 @@
    Grid alignment helper
 ========================= */
 
-/* Bootstrap rowの中で高さを揃える補助 */
 #works > div {
   display: flex;
 }
@@ -136,6 +152,7 @@
 
 .img-modal {
   display: none;
+
   position: fixed;
   z-index: 9999;
 
@@ -148,14 +165,22 @@
 
   justify-content: center;
   align-items: center;
+
+  /* 追加：基準位置 */
+  position: fixed;
 }
 
 .img-modal-content {
   max-width: 90%;
   max-height: 90%;
+
   border-radius: 8px;
+
+  /* 追加：クリック誤判定防止 */
+  pointer-events: auto;
 }
 
+/* 閉じるボタン */
 .img-modal-close {
   position: absolute;
   top: 20px;
@@ -164,4 +189,46 @@
   font-size: 32px;
   color: white;
   cursor: pointer;
+
+  z-index: 10001;
+}
+
+/* =========================
+   Modal Navigation Buttons
+========================= */
+
+.img-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+
+  font-size: 40px;
+  width: 50px;
+  height: 80px;
+
+  cursor: pointer;
+
+  z-index: 10001;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  user-select: none;
+}
+
+.img-nav:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.img-nav.left {
+  left: 10px;
+}
+
+.img-nav.right {
+  right: 10px;
 }

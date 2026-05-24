@@ -1,3 +1,60 @@
+let globalMedia = [];
+let currentIndex = 0;
+
+const modal = document.getElementById("imgModal");
+const modalImg = document.getElementById("imgModalContent");
+const modalClose = document.getElementById("imgModalClose");
+
+const btnPrev = document.getElementById("imgPrev");
+const btnNext = document.getElementById("imgNext");
+
+function openModal(mediaList, index) {
+  globalMedia = mediaList;
+  currentIndex = index;
+
+  renderModal();
+  modal.style.display = "flex";
+}
+
+function renderModal() {
+  const m = globalMedia[currentIndex];
+
+  if (m.type === "image") {
+    modalImg.src = m.src;
+  } else {
+    modalImg.src = "";
+  }
+}
+
+function next() {
+  if (!globalMedia.length) return;
+  currentIndex = (currentIndex + 1) % globalMedia.length;
+  renderModal();
+}
+
+function prev() {
+  if (!globalMedia.length) return;
+  currentIndex = (currentIndex - 1 + globalMedia.length) % globalMedia.length;
+  renderModal();
+}
+
+btnNext.onclick = next;
+btnPrev.onclick = prev;
+
+modalClose.onclick = () => {
+  modal.style.display = "none";
+};
+
+modal.onclick = (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+};
+
+// =========================
+// Card生成
+// =========================
+
 function createPortfolioCard(work) {
   const card = document.createElement("div");
   card.className = "portfolio-card";
@@ -10,37 +67,14 @@ function createPortfolioCard(work) {
   const thumbRow = document.createElement("div");
   thumbRow.className = "thumb-row";
 
-  // =========================
-  // モーダル取得
-  // =========================
-  const modal = document.getElementById("imgModal");
-  const modalImg = document.getElementById("imgModalContent");
-  const modalClose = document.getElementById("imgModalClose");
-
-  function openModal(src) {
-    modal.style.display = "flex";
-    modalImg.src = src;
-  }
-
-  modalClose.onclick = () => {
-    modal.style.display = "none";
-  };
-
-  modal.onclick = (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-    }
-  };
-
   function render(i) {
     const m = work.media[i];
 
     if (m.type === "image") {
       main.innerHTML = `<img src="${m.src}">`;
 
-      // ★ クリックで拡大
       main.querySelector("img").onclick = () => {
-        openModal(m.src);
+        openModal(work.media, i);
       };
     }
 
@@ -97,6 +131,10 @@ function createPortfolioCard(work) {
 
   return card;
 }
+
+// =========================
+// JSON load
+// =========================
 
 fetch("assets/data/works.json")
   .then((r) => r.json())

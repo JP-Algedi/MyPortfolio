@@ -15,18 +15,24 @@
     <div id="header"></div>
 
     <div class="container py-4">
-      <h1 class="mb-4">Works</h1>
+      <h1 class="mb-4">つくったもの</h1>
       <div id="works" class="row g-4"></div>
     </div>
 
     <div id="footer"></div>
 
     <!-- =========================
-       IMAGE MODAL
+       IMAGE MODAL (NAV付き)
   ========================== -->
     <div id="imgModal" class="img-modal">
       <span class="img-modal-close" id="imgModalClose">×</span>
+
+      <!-- 左右ボタン -->
+      <button class="img-nav left" id="imgPrev">‹</button>
+
       <img id="imgModalContent" class="img-modal-content" />
+
+      <button class="img-nav right" id="imgNext">›</button>
     </div>
 
     <script src="assets/js/layout.js"></script>
