@@ -10,11 +10,38 @@ function createPortfolioCard(work) {
   const thumbRow = document.createElement("div");
   thumbRow.className = "thumb-row";
 
+  // =========================
+  // モーダル取得
+  // =========================
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("imgModalContent");
+  const modalClose = document.getElementById("imgModalClose");
+
+  function openModal(src) {
+    modal.style.display = "flex";
+    modalImg.src = src;
+  }
+
+  modalClose.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  modal.onclick = (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+
   function render(i) {
     const m = work.media[i];
 
     if (m.type === "image") {
       main.innerHTML = `<img src="${m.src}">`;
+
+      // ★ クリックで拡大
+      main.querySelector("img").onclick = () => {
+        openModal(m.src);
+      };
     }
 
     if (m.type === "video") {
@@ -40,10 +67,10 @@ function createPortfolioCard(work) {
       thumb.innerHTML = "▶";
     }
 
-    thumb.addEventListener("click", () => {
+    thumb.onclick = () => {
       current = i;
       render(current);
-    });
+    };
 
     thumbRow.appendChild(thumb);
   });
@@ -58,6 +85,7 @@ function createPortfolioCard(work) {
       ${(work.tags || []).map((t) => `<span class="badge bg-secondary me-1">${t}</span>`).join("")}
     </div>
     <small class="text-muted d-block mt-2">${work.date}</small>
+
     ${work.url ? `<a href="${work.url}" target="_blank" class="btn btn-sm btn-outline-primary mt-2">Details</a>` : ""}
   `;
 
